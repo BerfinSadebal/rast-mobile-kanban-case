@@ -1,50 +1,81 @@
-Rast Mobile Kanban Task Management System
-Bu proje, Rast Mobile teknik mülakat süreci için geliştirilmiş, dinamik board yapısına sahip Fullstack bir Kanban uygulamasıdır. Figma tasarımı temel alınarak modernize edilmiştir.
+# Rast Mobile Kanban Task Management System
 
-Öne Çıkan Özellikler:
-Dinamik Board (ID) Sistemi: Her board benzersiz bir slug/ID üzerinden oluşturulur ve erişilir. Örn: localhost:3001/proje-adi.
+Bu proje, Rast Mobile teknik mülakat süreci için geliştirilmiş; dinamik board yapısına, sürükle-bırak desteğine ve fullstack mimariye sahip bir iş yönetim sistemidir. Kullanıcılar kendi board'larını oluşturabilir, görevlerini organize edebilir ve tüm verileri kalıcı olarak MongoDB üzerinde saklayabilir.
 
-Fullstack Mimari: Veriler MongoDB üzerinde kalıcı olarak saklanır.
+## Öne Çıkan Özellikler
 
-Sürükle ve Bırak (DnD): @dnd-kit kullanılarak kartlar hem sütunlar arası hem de liste içi taşınabilir.
+*   **Fullstack Mimari:** Frontend ve Backend entegre çalışır. Veriler MongoDB üzerinde güvenle saklanır.
+*   **Dinamik Board Sistemi:** Her kullanıcı URL üzerinden benzersiz bir Board ID (Slug) ile kendi çalışma alanını oluşturabilir.
+*   **Sürükle & Bırak (DnD):** `@dnd-kit` kullanılarak görevler hem sütunlar arası hem de liste içi taşınabilir.
+*   **Sabit 4'lü Kanban Yapısı:** İş akışı; Backlog, To Do, In Progress ve Done sütunları üzerinden yönetilir.
+*   **Modern UI/UX:** Tailwind CSS ile responsive, modern ve Figma tasarımına sadık kalınarak geliştirilmiştir.
+*   **Son Gezilenler:** `localStorage` entegrasyonu sayesinde ziyaret edilen son board'lar ana sayfada listelenir.
 
-Sabit 4 Liste Yapısı: Task gereksinimlerine uygun olarak Backlog, To Do, In Progress ve Done sütunları mevcuttur.
+## Kullanılan Teknolojiler
 
-Gelişmiş UI/UX: Figma tasarımına %100 sadık kalınan, Tailwind CSS ile güçlendirilmiş responsive arayüz.
+| Katman | Teknoloji |
+| :--- | :--- |
+| **Frontend** | React 18, Next.js 14 (App Router) |
+| **Styling** | Tailwind CSS, Lucide Icons |
+| **Database** | MongoDB Atlas |
+| **ORM** | Prisma ORM |
+| **Language** | TypeScript |
+| **State & DnD** | @dnd-kit |
 
-Bonus (Son Gezilenler): localStorage entegrasyonu ile kullanıcının ziyaret ettiği son boardlar giriş ekranında listelenir.
+## Kurulum ve Çalıştırma
 
-Kullanılan Teknolojiler
-Frontend: React 18, Next.js 14 (App Router), TypeScript
-Styling: Tailwind CSS
-Database & ORM: MongoDB Atlas, Prisma ORM
-State Management: DnD-kit
+Projeyi yerel ortamınızda ayağa kaldırmak için aşağıdaki adımları izleyebilirsiniz:
 
-Kurulum ve Çalıştırma:
-Projeyi yerel ortamınızda çalıştırmak için aşağıdaki adımları takip edebilirsiniz:
+### 1. Projeyi Klonlayın
 
-1. Bağımlılıkları Yükleyin
+```bash
+git clone https://github.com/BerfinSadebal/rast-mobile-kanban-case.git
+cd rast-mobile-kanban-case
+```
+
+### 2. Bağımlılıkları Yükleyin
+
+```bash
 npm install
+```
 
-2. Ortam Değişkenlerini Ayarlayın
-Kök dizinde bir .env dosyası oluşturun ve MongoDB bağlantı adresinizi ekleyin:
-Kod snippet'i
-DATABASE_URL="mongodb+srv://<username>:<password>@cluster.mongodb.net/rast-kanban"
+### 3. Ortam Değişkenlerini Ayarlayın
 
-3. Veritabanı Şemasını Senkronize Edin:
-Prisma modellerini veritabanına yansıtmak ve istemciyi oluşturmak için:
+Kök dizinde bir `.env` dosyası oluşturun ve MongoDB bağlantı adresinizi ekleyin:
+
+```env
+DATABASE_URL="mongodb+srv://KULLANICI_ADIN:SIFREN@cluster.mongodb.net/rast-kanban"
+```
+
+### 4. Veritabanı Şemasını Senkronize Edin
+
+```bash
 npx prisma db push
 npx prisma generate
+```
 
-4. Uygulamayı Başlatın
+### 5. (Opsiyonel) Örnek Verileri Yükleyin
+
+Veritabanını hazır görevlerle doldurmak için:
+
+```bash
+npx prisma db seed
+```
+
+### 6. Uygulamayı Başlatın
+
+```bash
 npm run dev
-Uygulama varsayılan olarak http://localhost:3000 (veya port doluysa 3001) adresinde çalışacaktır.
+```
 
-Proje Yapısı:
-src/app/[id]/page.tsx: Dinamik routing (Board ID) mantığının yönetimi.
-src/components: KanbanBoard, Column ve Card gibi atomik bileşenler.
-src/services: Frontend'den API'ye veri taşıyan servis katmanı.
-prisma/schema.prisma: Veritabanı modellerinin (Board ve Task) tanımları.
+Uygulama varsayılan olarak `http://localhost:3000` adresinde çalışacaktır.
 
-API Testi
-Proje kök dizininde bulunan postman_collection.json dosyasını Postman'e import ederek RESTful API endpoint'lerini test edebilirsiniz.
+## Proje Yapısı
+
+```text
+src/
+├── app/            # Next.js App Router (Dinamik [id] yapısı)
+├── components/     # Atomik UI bileşenleri (Board, Column, Card)
+├── services/       # API ve Veritabanı iletişim katmanı
+└── prisma/         # Veritabanı şeması ve Seed dosyası
+```
