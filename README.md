@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 83635f54b6ec551bb097e2bf9939f07929c58c86
 # Rast Mobile Kanban Task Management System
 
 Bu proje, Rast Mobile teknik mülakat süreci için geliştirilmiş; dinamik board yapısına, sürükle-bırak desteğine ve fullstack mimariye sahip bir iş yönetim sistemidir. Kullanıcılar kendi board'larını oluşturabilir, görevlerini organize edebilir ve tüm verileri kalıcı olarak MongoDB üzerinde saklayabilir.
