@@ -1,50 +1,40 @@
 Rast Mobile Kanban Task Management System
-Bu proje, Rast Mobile teknik mülakat süreci için geliştirilmiş, dinamik board yapısına sahip Fullstack bir Kanban uygulamasıdır. Figma tasarımı temel alınarak modernize edilmiştir.
+Bu projede kullanıcılar kendi board’larını oluşturabilir, task’leri sürükle-bırak ile yönetebilir ve tüm veriler kalıcı olarak veritabanında saklanır.
+Projeyi geliştirirken fullstack olarak çalıştım ve hem frontend hem backend tarafını kendim oluşturdum.
 
-Öne Çıkan Özellikler:
-Dinamik Board (ID) Sistemi: Her board benzersiz bir slug/ID üzerinden oluşturulur ve erişilir. Örn: localhost:3001/proje-adi.
+Projede Kullandıklarım & Özellikler:
+Fullstack Yapı
+Uygulamada frontend ve backend birlikte çalışmaktadır. Veriler MongoDB üzerinde tutulur.
 
-Fullstack Mimari: Veriler MongoDB üzerinde kalıcı olarak saklanır.
+Sürükle & Bırak (DnD)
+@dnd-kit kullanarak task’ler hem sütunlar arasında hem de kendi listesi içinde taşınabilir.
 
-Sürükle ve Bırak (DnD): @dnd-kit kullanılarak kartlar hem sütunlar arası hem de liste içi taşınabilir.
+Sabit 4 Liste Yapısı
+Kanban mantığına uygun olarak:
+Backlog
+To Do
+In Progress
+Done
 
-Sabit 4 Liste Yapısı: Task gereksinimlerine uygun olarak Backlog, To Do, In Progress ve Done sütunları mevcuttur.
+Gelişmiş UI / UX
+Arayüzü Tailwind CSS kullanarak modern, responsive ve kullanıcı dostu şekilde tasarladım.
 
-Gelişmiş UI/UX: Figma tasarımına %100 sadık kalınan, Tailwind CSS ile güçlendirilmiş responsive arayüz.
-
-Bonus (Son Gezilenler): localStorage entegrasyonu ile kullanıcının ziyaret ettiği son boardlar giriş ekranında listelenir.
+Son Gezilen Boardlar
+localStorage entegrasyonu sayesinde kullanıcının ziyaret ettiği son board’lar giriş ekranında listelenir.
 
 Kullanılan Teknolojiler
-Frontend: React 18, Next.js 14 (App Router), TypeScript
-Styling: Tailwind CSS
-Database & ORM: MongoDB Atlas, Prisma ORM
-State Management: DnD-kit
+React / Next.js
+TypeScript
+Tailwind CSS
+MongoDB
+Prisma ORM
+@dnd-kit
 
-Kurulum ve Çalıştırma:
-Projeyi yerel ortamınızda çalıştırmak için aşağıdaki adımları takip edebilirsiniz:
-
-1. Bağımlılıkları Yükleyin
+Projeyi Çalıştırma
+Projeyi yerel ortamda çalıştırmak için:
 npm install
-
-2. Ortam Değişkenlerini Ayarlayın
-Kök dizinde bir .env dosyası oluşturun ve MongoDB bağlantı adresinizi ekleyin:
-Kod snippet'i
-DATABASE_URL="mongodb+srv://<username>:<password>@cluster.mongodb.net/rast-kanban"
-
-3. Veritabanı Şemasını Senkronize Edin:
-Prisma modellerini veritabanına yansıtmak ve istemciyi oluşturmak için:
-npx prisma db push
-npx prisma generate
-
-4. Uygulamayı Başlatın
+MongoDB bağlantınızı .env dosyasına ekleyin.
+DATABASE_URL="mongodb+srv://..."
+Ardından:
 npm run dev
-Uygulama varsayılan olarak http://localhost:3000 (veya port doluysa 3001) adresinde çalışacaktır.
-
-Proje Yapısı:
-src/app/[id]/page.tsx: Dinamik routing (Board ID) mantığının yönetimi.
-src/components: KanbanBoard, Column ve Card gibi atomik bileşenler.
-src/services: Frontend'den API'ye veri taşıyan servis katmanı.
-prisma/schema.prisma: Veritabanı modellerinin (Board ve Task) tanımları.
-
-API Testi
-Proje kök dizininde bulunan postman_collection.json dosyasını Postman'e import ederek RESTful API endpoint'lerini test edebilirsiniz.
+komutuyla uygulamayı başlatabilirsiniz.
