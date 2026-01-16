@@ -2,7 +2,7 @@
 
 Dinamik board yapısına, sürükle-bırak desteğine ve fullstack mimariye sahip bir iş yönetim sistemidir. Kullanıcılar kendi board'larını oluşturabilir, görevlerini organize edebilir ve tüm verileri kalıcı olarak MongoDB üzerinde saklayabilir.
 
-## Öne Çıkan Özellikler
+## Özellikler
 
 *   **Fullstack Mimari:** Frontend ve Backend entegre çalışır. Veriler MongoDB üzerinde güvenle saklanır.
 *   **Dinamik Board Sistemi:** Her kullanıcı URL üzerinden benzersiz bir Board ID (Slug) ile kendi çalışma alanını oluşturabilir.
