@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Board {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  slug      String   @unique
+  title     String
+  tasks     Task[]
+  createdAt DateTime @default(now())
+}
+
+model Task {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  content   String
+  description String?
+  color     String?  // hex code
+  status    String   // BACKLOG, TODO, IN_PROGRESS, DONE
+  order     Int
+  board     Board    @relation(fields: [boardId], references: [id])
+  boardId   String   @db.ObjectId
+  createdAt DateTime @default(now())
+}
